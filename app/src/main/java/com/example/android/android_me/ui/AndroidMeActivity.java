@@ -14,21 +14,23 @@ public class AndroidMeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_me);
-        BodyPartFragment headFragment = new BodyPartFragment();
-        headFragment.setmImageIds(AndroidImageAssets.getHeads());
-        headFragment.setmListIndex(1);
-        BodyPartFragment bodyFragment = new BodyPartFragment();
-        bodyFragment.setmImageIds(AndroidImageAssets.getBodies());
-        bodyFragment.setmListIndex(1);
-        BodyPartFragment legFragment = new BodyPartFragment();
-        legFragment.setmImageIds(AndroidImageAssets.getLegs());
-        legFragment.setmListIndex(1);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .add(R.id.head_container, headFragment)
-                .add(R.id.body_container, bodyFragment)
-                .add(R.id.leg_container, legFragment)
-                .commit();
+        if (savedInstanceState == null) {
+            BodyPartFragment headFragment = new BodyPartFragment();
+            headFragment.setmImageIds(AndroidImageAssets.getHeads());
+            headFragment.setmListIndex(1);
+            BodyPartFragment bodyFragment = new BodyPartFragment();
+            bodyFragment.setmImageIds(AndroidImageAssets.getBodies());
+            bodyFragment.setmListIndex(1);
+            BodyPartFragment legFragment = new BodyPartFragment();
+            legFragment.setmImageIds(AndroidImageAssets.getLegs());
+            legFragment.setmListIndex(1);
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .add(R.id.head_container, headFragment)
+                    .add(R.id.body_container, bodyFragment)
+                    .add(R.id.leg_container, legFragment)
+                    .commit();
+        }
 
     }
 }
