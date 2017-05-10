@@ -1,5 +1,6 @@
 package com.example.android.android_me.ui;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,16 +15,20 @@ public class AndroidMeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_me);
+
+        int headIndex = getIntent().getIntExtra(MainActivity.HEAD_INDEX_KEY,0);
+        int bodyIndex =  getIntent().getIntExtra(MainActivity.BODY_INDEX_KEY,0);
+        int legIndex =  getIntent().getIntExtra(MainActivity.LEG_INDEX_KEY,0);
         if (savedInstanceState == null) {
             BodyPartFragment headFragment = new BodyPartFragment();
             headFragment.setmImageIds(AndroidImageAssets.getHeads());
-            headFragment.setmListIndex(1);
+            headFragment.setmListIndex(headIndex);
             BodyPartFragment bodyFragment = new BodyPartFragment();
             bodyFragment.setmImageIds(AndroidImageAssets.getBodies());
-            bodyFragment.setmListIndex(1);
+            bodyFragment.setmListIndex(bodyIndex);
             BodyPartFragment legFragment = new BodyPartFragment();
             legFragment.setmImageIds(AndroidImageAssets.getLegs());
-            legFragment.setmListIndex(1);
+            legFragment.setmListIndex(legIndex);
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .add(R.id.head_container, headFragment)
